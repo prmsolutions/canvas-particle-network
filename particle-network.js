@@ -166,6 +166,13 @@
 
     }.bind(this));
 
+    this.initParticles()
+
+    // Update canvas
+    requestAnimationFrame(this.update.bind(this));
+  }
+
+  ParticleNetwork.prototype.initParticles = function () {
     // Initialise particles
     this.particles = [];
     for (var i = 0; i < this.canvas.width * this.canvas.height / this.options.density; i++) {
@@ -201,10 +208,8 @@
         this.particles.push(this.mouseParticle);
       }.bind(this));
     }
-
-    // Update canvas
-    requestAnimationFrame(this.update.bind(this));
   }
+
   ParticleNetwork.prototype.update = function () {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.ctx.globalAlpha = 1;
@@ -267,6 +272,12 @@
     for (var property in styles) {
       div.style[property] = styles[property];
     }
+  }
+  // Helper method to set color
+  ParticleNetwork.prototype.setColor = function (newColor) {
+    this.options.particleColor = (newColor !== undefined) ? newColor : this.options.particleColor
+    this.initParticles()
+    this.update()
   }
 
   return ParticleNetwork;
