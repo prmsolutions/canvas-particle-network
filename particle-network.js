@@ -58,7 +58,7 @@
     this.ctx.beginPath();
     this.ctx.fillStyle = this.particleColor;
     this.ctx.globalAlpha = 0.7;
-    this.ctx.arc(this.x, this.y, 2, 0, 2 * Math.PI);
+    this.ctx.arc(this.x, this.y, 50, 0, 2 * Math.PI);
     this.ctx.fill();
   };
 
